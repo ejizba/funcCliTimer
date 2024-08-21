@@ -4,7 +4,8 @@ import { runFuncVersion } from "../utils/runFuncVersion";
 export async function timerTrigger1(myTimer: Timer, context: InvocationContext): Promise<void> {
     context.log('Timer function processed request.');
     for (let i = 0; i < 10; i++) {
-        await runFuncVersion();
+        const output = await runFuncVersion();
+        context.log(`i${i} - ${output}`);
         await delay(2000);
     }
 }
